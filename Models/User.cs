@@ -16,5 +16,6 @@ public class User
     [DataType(DataType.Password)]
     public required string Password { get; set; }
 
-    public ShoppingList ShoppingList { get; set; } = new ShoppingList();
+    [Required]
+    public required ShoppingList ShoppingList { get; set; } = null!;
 }

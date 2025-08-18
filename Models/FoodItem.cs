@@ -16,5 +16,9 @@ public class FoodItem
     public int Quantity { get; set; }
 
     [Required]
-    public int ListId { get; set; }
+    public required ShoppingList ShoppingList { get; set; }
+
+    [Required]
+    [Range(1, int.MaxValue)]
+    public int ShoppingListId { get; set; }
 }

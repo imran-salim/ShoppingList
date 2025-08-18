@@ -10,5 +10,9 @@ public class ShoppingList
     [Required]
     public int UserId { get; set; }
 
-    public ICollection<FoodItem> FoodItems { get; set; } = new List<FoodItem>();
+    [Required]
+    public required User User { get; set; }
+
+    [Required]
+    public List<FoodItem> FoodItems { get; set; } = new();
 }
