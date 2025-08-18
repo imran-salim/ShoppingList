@@ -1,5 +1,5 @@
-using ShoppingList.Models;
 using Microsoft.EntityFrameworkCore;
+using ShoppingList.Models;
 
 namespace ShoppingList.Data;
 
@@ -17,6 +17,10 @@ public class AppDbContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
+
+        modelBuilder.Entity<Models.ShoppingList>()
+            .HasIndex(sl => sl.UserId)
+            .IsUnique();
 
         modelBuilder.Entity<User>()
             .HasOne(u => u.ShoppingList)
