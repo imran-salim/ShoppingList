@@ -14,4 +14,7 @@ public class FoodItem
     [Required]
     [Range(1, 1000)]
     public int Quantity { get; set; }
+
+    [Required]
+    public int ListId { get; set; }
 }
