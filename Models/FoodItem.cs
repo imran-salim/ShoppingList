@@ -19,6 +19,5 @@ public class FoodItem
     public required ShoppingList ShoppingList { get; set; }
 
     [Required]
-    [Range(1, int.MaxValue)]
     public int ShoppingListId { get; set; }
 }
