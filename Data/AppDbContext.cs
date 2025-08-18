@@ -1,18 +1,17 @@
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using ShoppingList.Models;
 
 namespace ShoppingList.Data;
 
-public class AppDbContext : DbContext
+public class AppDbContext : IdentityDbContext<AppUser, IdentityRole<int>, int>
 {
-    public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
-    {
+    public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
-    }
+    public DbSet<Models.ShoppingList> ShoppingLists => Set<Models.ShoppingList>();
 
-    public DbSet<User> Users { get; set; }
-    public DbSet<FoodItem> FoodItems { get; set; }
-    public DbSet<Models.ShoppingList> ShoppingLists { get; set; }
+    public DbSet<FoodItem> FoodItems => Set<FoodItem>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -22,7 +21,7 @@ public class AppDbContext : DbContext
             .HasIndex(sl => sl.UserId)
             .IsUnique();
 
-        modelBuilder.Entity<User>()
+        modelBuilder.Entity<AppUser>()
             .HasOne(u => u.ShoppingList)
             .WithOne(sl => sl.User)
             .HasForeignKey<Models.ShoppingList>(sl => sl.UserId)

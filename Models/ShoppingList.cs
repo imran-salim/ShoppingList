@@ -11,8 +11,8 @@ public class ShoppingList
     public int UserId { get; set; }
 
     [Required]
-    public required User User { get; set; }
+    public required AppUser User { get; set; } = null!;
 
     [Required]
-    public List<FoodItem> FoodItems { get; set; } = new();
+    public List<FoodItem> FoodItems { get; set; } = [];
 }
