@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using ShoppingList.Models;
 
 namespace ShoppingList.Data;
@@ -10,7 +11,7 @@ public class AppDbContext : IdentityDbContext<AppUser, IdentityRole<int>, int>
     public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
     public DbSet<Models.ShoppingList> ShoppingLists => Set<Models.ShoppingList>();
-
+    
     public DbSet<FoodItem> FoodItems => Set<FoodItem>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -36,4 +37,3 @@ public class AppDbContext : IdentityDbContext<AppUser, IdentityRole<int>, int>
             .OnDelete(DeleteBehavior.Cascade);
     }
 }
-

@@ -10,9 +10,7 @@ public class ShoppingList
     [Required]
     public int UserId { get; set; }
 
-    [Required]
-    public required AppUser User { get; set; } = null!;
+    public AppUser User { get; set; } = null!;
 
-    [Required]
     public List<FoodItem> FoodItems { get; set; } = [];
 }
