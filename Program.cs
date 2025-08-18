@@ -1,8 +1,15 @@
+using Microsoft.EntityFrameworkCore;
+using ShoppingList.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllersWithViews();
+
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? "Data Source=shoppinglist.db";
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseSqlite(connectionString));
 
 var app = builder.Build();
 
