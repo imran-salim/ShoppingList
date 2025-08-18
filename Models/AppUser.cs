@@ -7,7 +7,7 @@ public class AppUser : IdentityUser<int>
 {
 
     [Required]
-    public string Username { get; set; } = string.Empty;
+    public string DisplayName { get; set; } = string.Empty;
 
     public ShoppingList? ShoppingList { get; set; }
 }
