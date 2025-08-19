@@ -7,17 +7,14 @@ public class FoodItem
     [Key]
     public int Id { get; set; }
 
-    [Required]
-    [StringLength(100)]
-    public required string Name { get; set; }
+    [Required, StringLength(100)]
+    public string Name { get; set; } = "";
 
-    [Required]
     [Range(1, 1000)]
     public int Quantity { get; set; }
 
     [Required]
-    public required ShoppingList ShoppingList { get; set; }
-
-    [Required]
     public int ShoppingListId { get; set; }
+    
+    public ShoppingList ShoppingList { get; set; } = null!;
 }
